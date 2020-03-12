@@ -5,8 +5,8 @@
    Tutorial 11
    Case Problem 1
 
-   Author: 
-   Date:   
+   Author: Dominic Torres
+   Date: 3/11/20  
    
    Filename: bw_review.js
 	
@@ -33,8 +33,24 @@
       within textStr
 
 */
+//step 4
+window.onload = startUp;
+//step 5a,b,c
+function inti(){
+   var stars = document.getElementsByClassName("span#stars img");
+   for(var i = 0; i < stars.length; i++){
+      stars[i].style.cursor = "pointer";
+      stars[i].addEventListener("mouseenter", lightStars);
+   }
+   document.getElementById("commentfield").addEventListener("keyup", updateCount);
 
+}
 
+function lightStars(){
+   var starNumber = e.target.alt;
+   var stars = document.querySelectorAll("span#stars img");
+
+}
 
   
 
