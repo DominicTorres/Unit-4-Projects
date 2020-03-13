@@ -33,30 +33,66 @@
       within textStr
 
 */
-//step 4
-window.onload = startUp;
-//step 5a,b,c
-function inti(){
-   var stars = document.getElementsByClassName("span#stars img");
-   for(var i = 0; i < stars.length; i++){
-      stars[i].style.cursor = "pointer";
-      stars[i].addEventListener("mouseenter", lightStars);
-   }
-   document.getElementById("commentfield").addEventListener("keyup", updateCount);
-
-}
-
-function lightStars(){
-   var starNumber = e.target.alt;
+//step 4, to start up the window
+window.onload = init;
+function init(){
    var stars = document.querySelectorAll("span#stars img");
+   for(var i = 0; i < stars.length; i++){
+      stars[i].style.cursor = "pointer"
+      stars[i].addEventListener("mouseenter", lightStars)
+   }
+   document.getElementById("commentField").addEventListener("keyup", updateCount);
+}
+//step 6 a,b,c,d
+function lightStars(e){
+   var starNumber = e.target.alt
+   var stars = document.querySelectorAll("span#stars img");
+   for(var i = 0; i < stars.length; i++){
+      stars[i].src = "bw_star2.png";
+   }
+   for(var i = starNumber; i < 5; i++){
+      stars[i].src = "bw_star.png";
+   }
+//step 6e,f,g
+   document.getElementById("rating").value = starNumber + " stars";
 
+   e.target.addEventListener("mouseleave", turnOffStars)
+
+   e.target.addEventListener("click",
+      function(){
+         e.target.removeEventListener("mouseleave", turnOffStars)
+      }
+   );
+}
+//step 7
+function turnOffStars(){
+   var stars = document.getElementsByClassName("span#stars img");
+
+   for(var i = 0; i < stars.length; i++){
+      stars[i].src = "bw_star.png"
+   }
+   document.getElementById("rating").value = ""
 }
 
+function updateCount(){
+   var commentText = document.getElementById("comment").value;
+   var charCount = countCharacters(commentText);
+   var wordCountBox = document.getElementById("wordCount");
+   wordCountBox.value = charCount + "/1000";
+   //this is too many words
+   if(charCount > 1000){
+      wordCountBox.style.backgroundColor = "red";
+      wordCountBox.style.color = "white";
+   }else{
+      wordCountBox.style.backgroundColor = "white";
+      wordCountBox.style.color = "black";
+   }
+}
+   
   
 
 
-  
-  
+
   
 /*=================================================================*/
 
